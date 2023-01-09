@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/form.css">
+    <link rel="icon" href="https://www.logo.wine/a/logo/Instagram/Instagram-Logo.wine.svg" type="image/icon type">
+    <title>Log in</title>
+    
+</head>
+<body>
+   
+    <div id="forms">
+        <form id="login">
+            <div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png" alt="" /></div>
+            <input type="text" id="log-username" placeholder="username">
+            <input type="password" id="log-password" placeholder="password">
+            <button onclick="login()">log in</button>
+        </form>
+        <form  id="signup">
+            <div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png" alt="" /></div>
+            <input type="text" id="name" placeholder="name">
+            <input type="email" id="email" placeholder="email">
+            <input type="password" id="password" placeholder="password">
+            <input type="text" id="username" placeholder="username">
+            <input type="number" id="mobile" placeholder="mobile">
+            <input type="text" id="decription" placeholder="decription">
+            <button onclick="register()">Registration</button>
+        </form>
+    </div>
+    <div id="copy">
+        <img src="pic/instaFoot.png" alt="">
+    </div>
+
+
+    
+</body>
+</html>
+<!-- <script src="Authotication.js"></script> -->
+<script>
+    function user(n,e,p,u,m,d){
+    this.name = n
+    this.email = e
+    this.password = p
+    this.username = u
+    this.mobile = m
+    this.description = d 
+}
+
+
+async function register(){
+
+    event.preventDefault()
+   
+
+    const name = document.querySelector("#name").value
+    const email = document.querySelector("#email").value
+    const password = document.querySelector("#password").value
+    const username = document.querySelector("#username").value
+    const mobile = document.querySelector("#mobile").value
+    const decription = document.querySelector("#decription").value
+
+    let userData = new user(name,email,password,username,mobile,decription)
+
+    
+    try{
+
+    let url = 'https://masai-api-mocker.herokuapp.com/auth/register'
+ 
+    let res = await fetch(url,{
+        method :'POST',
+
+        body: JSON.stringify(userData),
+
+        head:{
+            'Content-Type':'application/json'
+        },
+    });
+
+    let data = await res.json()
+
+    console.log("sihn-up",data)
+    }
+    catch(err){
+        console.log(`error ${err}`)
+    }
+    
+}
+
+
+async function login(){
+        event.preventDefault()
+       
+        let logindata = {
+            username:document.querySelector("#log-username").value,
+            password:document.querySelector("#log-password").value
+        }
+      
+        try{
+        // masai login server url
+        let l_url = 'https://masai-api-mocker.herokuapp.com/auth/login'
+
+
+        let res = await fetch(l_url,{
+            // post methodes
+            method: 'POST',
+
+            body: JSON.stringify(logindata),
+
+            //heder is additional data about api
+
+            headers: {
+                'Content-Type':'application/json'
+            },
+
+        });
+
+        let data = await res.json()
+        let token = data.token
+        getprofile(logindata.username,token)
+        console.log("log in",data)
+        }
+        catch(err){
+        console.log(`error ${err}`)
+        }   
+
+    }
+    
+
+    // this function for show all crediential of user when he got token 
+
+    async function getprofile(username,token){
+
+        // masai getusername server url
+        let api = `https://masai-api-mocker.herokuapp.com/user/${username}`;
+
+        let res = await fetch(api,{
+        
+        headers: {
+            'Content-Type':'application/json',
+
+            // authtication header
+            Authorization: `Bearer ${token}` 
+
+        }, 
+        })
+
+        let data = await res.json();
+        console.log("username",data)
+
+
+    }
+
+
+
+</script>

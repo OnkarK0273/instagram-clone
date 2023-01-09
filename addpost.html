@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/navbar.css">
+    <link rel="icon" href="https://www.logo.wine/a/logo/Instagram/Instagram-Logo.wine.svg" type="image/icon type">
+    <title>post</title>
+    <style>
+        #forms{
+            width: 60%;
+            margin: auto;
+            display: flex;
+            justify-content:space-around;
+            padding: 20px;
+        }
+        #addform,#deleform,#updateform{
+
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        #botton{
+            display: flex;
+            justify-content: end;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        #botton button{
+            padding: 8px;
+            border-radius: 5px;
+            background-color: red;
+            color: white;
+            border: none;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="box">
+       
+    </div>
+
+    <div id="botton">
+        <a href="./Recycle.html"><button>View Deleted Posts</button></a>
+
+    </div>
+
+    <div id="forms">
+
+        <form id="addform">
+            <h3>Add Post</h3>
+            <input type="text"  id="id" placeholder="Id">
+            <input type="text"  id="caption" placeholder="Caption">
+            <input type="file"  id="image" accept="image/*" >
+            <input type="submit" id="btn" value="POST">
+        </form>
+
+        
+        <form  id="updateform">
+            <h3>Update Caption</h3>
+            <input type="text" name="" id="update_cap" placeholder="update caption">
+            <input type="text" name="" id="update_id" placeholder="id">
+            <input type="submit" id="cap_btn" value="Update">
+        </form>
+
+
+    </div>
+
+
+    
+</body>
+</html>
+<script type="module" src="addpost.js"></script>

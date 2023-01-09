@@ -1,0 +1,87 @@
+body{
+    margin: 0;
+    background-color: #eae7e7;
+}
+#box{
+    border: 1px solid gray;
+    background-color: #FFFFFF;
+    position: sticky;
+    top: 0;
+}
+#navbar{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    border: 0px solid gray;
+    padding: 10px;
+}
+#logo{
+    width: 12%;
+    border: 0px solid black;
+    background-color: #FFFFFF;
+
+}
+#logo>img{
+    width: 100%;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+#icon{
+    display: flex;
+    width: 80%;
+    border: 0px solid black;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+#icon>#serch{
+    width: 40%;
+    margin-left: 5px;
+    border-radius: 10px;
+    
+}
+#icon>#serch>input{
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #EFEFEF;
+    border: none;
+    border: 0px solid black;
+}
+#ic{
+    width: 100%;
+    border: 0px solid black;
+    display: flex;
+    justify-content: space-around;
+    background-color: #FFFFFF;
+}
+
+#ic>img{
+    width:100px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    border: 0px solid black;
+}
+#profile{
+    width: 28px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+
+}
+
+@media screen and (min-width: 30em) {
+    #ic {
+      width: 100%
+    }
+    #ic>img{
+        width: 28px;
+    }
+  }
+  
+  @media screen and (min-width: 48em) {
+    #ic {
+      width: 25%;
+    }
+  }
